@@ -37,10 +37,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
           <script src="https://cdn.tailwindcss.com"></script>
       </Head>
-     <div>
+     <div className={"flex flex-wrap"}>
          {load? <p>loading</p>:
          mined.map((single,index)=>{
-             return <div className={"flex w-[150px]"}><BasicCard value={single}/></div>
+             return <div className={"flex w-[150px] h-[200px]   m-5"}><BasicCard value={single}/></div>
 
 
          })

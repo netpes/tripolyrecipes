@@ -17,23 +17,20 @@ const bull = (
 
 export default function BasicCard(props) {
 
+
+    function Navigate(id){
+     window.location.href = id;
+    }
     return (
-        <Card sx={{ width: "150px", display: "inline"}}>
+        <Card sx={{ width: "150px", display: "inline"}} onClick={()=>Navigate(props.value.index)}>
             <CardContent>
 
                 <Typography variant="h5" component="div">
                     {props.value.title}
                 </Typography>
 
-                <Typography variant="body2">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
-                </Typography>
+
             </CardContent>
-            <CardActions>
-                <Button size="small">Learn More</Button>
-            </CardActions>
         </Card>
     );
 }
