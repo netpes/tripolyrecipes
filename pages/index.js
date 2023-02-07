@@ -12,7 +12,7 @@ export default function Home() {
     const [load,setLoad] = useState(true)
     useEffect( ()=>{
         async function Ax(){
-            const res = await axios.get("http://localhost:3000/../api/getall");
+            const res = await axios.get("../api/getall");
             // console.log(res)
             let data = res.data.recipe.alldata
             setLoad(false)
