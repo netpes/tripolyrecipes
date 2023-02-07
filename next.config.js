@@ -8,7 +8,7 @@ module.exports = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://tripolyrecipes-qmybp0zu7-netpes.vercel.app/',
+        destination: 'https://tripolyrecipes.vercel.app/',
       },
     ]
   },
