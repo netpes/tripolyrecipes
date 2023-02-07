@@ -10,8 +10,8 @@ export default async function handle(req, res) {
             try {
                Recipe.find().then((recipes)=>{
                    if (recipes) {
-                       // console.log(recipes[0].alldata)
-                       recipes[0].alldata.map((singlerecipe) => {
+                       // console.log("ta ",recipes[2].alldata)
+                       recipes[1]?.alldata.map((singlerecipe) => {
                            if (singlerecipe.index == index) {
                                check = true
                                datame = singlerecipe

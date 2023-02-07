@@ -3,7 +3,9 @@ import Head from 'next/head'
 import axios from "axios";
 import {useEffect, useState} from "react";
 import BasicCard from "./card";
-import {Grid} from "@mui/material";
+import SearchAppBar from "./appbar";
+
+
 
 
 export default function Home() {
@@ -37,7 +39,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
           <script src="https://cdn.tailwindcss.com"></script>
       </Head>
-     <div className={"flex flex-wrap"}>
+      {load? <p>loading</p>:<SearchAppBar mined={mined} setmined={setMine}/>}
+
+     <div className={"flex flex-wrap w-screen justify-center mt-[5vh]"}>
          {load? <p>loading</p>:
          mined.map((single,index)=>{
              return <div className={"flex w-[150px] h-[200px]   m-5"}><BasicCard value={single}/></div>
@@ -45,7 +49,6 @@ export default function Home() {
 
          })
          }
-
 
      </div>
     </>)

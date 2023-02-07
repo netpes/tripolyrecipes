@@ -9,7 +9,7 @@ export default async function handle(req, res) {
         const recipe = await Recipe?.find()
         if (recipe){
             // console.log(recipe)
-            res.status(200).json({success: true, recipe:recipe[0]});
+            res.status(200).json({success: true, recipe:recipe[1]});
         }
     } catch (error) {
         console.log(error);
