@@ -8,9 +8,9 @@ import AppBarQ from './Bar';
 export default function Singlerecipe(singlerecipe) {
     const recipe  = singlerecipe.data.recipe;
     console.log(recipe)
-    let result = recipe.data;
+    let result = recipe?.data;
     // result = result.replace(/?<="<img")(.*)(?='>'/, "<br/>:ההכנה<br/>");
-    result = result.replace(/כל הזכויות שמורות ©/, "");
+    result = result?.replace(/כל הזכויות שמורות ©/, "");
     // result = result.replace(/מצרכים/, "<br/>:המצרכים<br/>");
 
 
