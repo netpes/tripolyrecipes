@@ -5,29 +5,20 @@ import {Container} from "@mui/material";
 import AppBarQ from './Bar';
 
 
-export default function Singlerecipe(singlerecipe) {
-    const recipe  = singlerecipe.data.recipe;
-    console.log(recipe)
-    let result = recipe?.data;
-    // result = result.replace(/?<="<img")(.*)(?='>'/, "<br/>:ההכנה<br/>");
-    result = result?.replace(/כל הזכויות שמורות ©/, "");
-    // result = result.replace(/מצרכים/, "<br/>:המצרכים<br/>");
-
-
-    console.log(recipe);
+export default function Singlerecipe({id}) {
+    const [isloading,setIsLoading] = useState(true)
+    const [recipe,setRecipe] = useState()
     useEffect(()=>{
-        function Change(){
-            document.getElementById('change').innerHTML = result;
+        async function Load(){
+            const res = await axios.post("./api/getbyid", {index:id});
+            setRecipe(res.data.recipe)
+            setIsLoading(false)
+            document.getElementById('change').innerHTML = res.data.recipe?.data;
         }
-
-            Change()
-
+        Load()
     },[])
 
-
-
-
-
+    // console.log(recipe)
 
     const inputStyles = "p-[20px] m-5 w-80";
     // document.write(recipe.data);
@@ -41,7 +32,8 @@ export default function Singlerecipe(singlerecipe) {
             <AppBarQ/>
                 <Container sx={{fontSize:"2em", marginTop:"12vh"}} maxWidth="sm">
                 <div className={"pr-2 flex justify-center flex-col content-center flex-wrap"}>
-                    <p className={"text-blue text-right float-right"}>  {recipe?.title}</p>
+                    {isloading ? <p>loading</p>:
+                    <p className={"text-blue text-right float-right"}>  {recipe?.title}</p>}
                     <span dir="ltr" id={"change"}  className={"text-blue text-right float-right"} ></span>
 
                 </div>
@@ -59,10 +51,9 @@ export async function getServerSideProps({ query }) {
 
     const id = query.id
 
-    const res = await axios.post("http://localhost:3000/../api/getbyid", {index:id});
-    if (res.data){
-        const data = await res.data
+
+
         // console.log("asdas",data)
-        return { props: { data } }
-    }
+        return { props: { id } }
+
 }
