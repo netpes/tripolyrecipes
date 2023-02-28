@@ -18,10 +18,6 @@ export default function Singlerecipe({id}) {
         Load()
     },[])
 
-    // console.log(recipe)
-
-    const inputStyles = "p-[20px] m-5 w-80";
-    // document.write(recipe.data);
 
     return (
         <>
